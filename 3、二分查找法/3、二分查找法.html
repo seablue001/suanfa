@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二分查找法</title>
+</head>
+<body>
+	<script src="lib/quick.js"></script>
+	<script>
+	function binSearch(arr, data) {
+		// 将传入的数组用快速排序算法排序一下
+		var arr = qSort(arr);
+
+		var upperBound = arr.length -1;
+		var lowerBound = 0;
+
+		while(lowerBound <= upperBound) {
+			var mid = Math.floor((upperBound + lowerBound) / 2);
+			if(arr[mid] < data) {
+				lowerBound = mid + 1;
+			} else if(arr[mid] > data) {
+				upperBound = mid -1;
+			} else {
+				return mid;
+			}
+		}
+
+		return -1;
+	}
+
+	// 测试使用
+	var arr = [2,6,0,-2,100,3];
+	console.log(binSearch(arr, -2));
+	</script>
+</body>
+</html>
